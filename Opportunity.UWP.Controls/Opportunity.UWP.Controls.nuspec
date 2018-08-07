@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Opportunity</authors>
+    <owners>Opportunity</owners>
+    <licenseUrl>https://github.com/OpportunityLiu/Opportunity.UWP.Controls/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/OpportunityLiu/Opportunity.UWP.Controls</projectUrl>
+    <description>Controls for UWP apps.</description>
+    <copyright>Copyright Opportunity 2018</copyright>
+    <tags>UWP Controls Xaml</tags>
+    <dependencies>
+      <group targetFramework="UAP">
+        <dependency id="Opportunity.Helpers.Universal" version="1.3.15" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
