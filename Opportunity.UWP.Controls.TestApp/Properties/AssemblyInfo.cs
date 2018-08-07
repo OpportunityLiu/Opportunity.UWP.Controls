@@ -1,16 +1,18 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Opportunity.UWP.Controls;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Opportunity.UWP.Controls")]
-[assembly: AssemblyDescription("Controls for UWP apps.")]
-[assembly: AssemblyCompany("Opportunity")]
-[assembly: AssemblyProduct("Opportunity.UWP.Controls")]
-[assembly: AssemblyCopyright("Copyright © Opportunity 2018")]
+[assembly: AssemblyTitle("Opportunity.UWP.Controls.TestApp")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Opportunity.UWP.Controls.TestApp")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -22,14 +24,6 @@ using Opportunity.UWP.Controls;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(AssemblyInfo.Version)]
-[assembly: AssemblyFileVersion(AssemblyInfo.Version)]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
-
-namespace Opportunity.UWP.Controls
-{
-    internal static class AssemblyInfo
-    {
-        public const string Version = "1.0.1";
-    }
-}

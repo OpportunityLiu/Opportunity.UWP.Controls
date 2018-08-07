@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Media;
 
 namespace Opportunity.UWP.Controls
 {
@@ -45,7 +49,7 @@ namespace Opportunity.UWP.Controls
     }
 
     [ContentProperty(Name = nameof(Value))]
-    public class DataTemplateKeyValuePair : DependencyObjectCollection
+    public class DataTemplateKeyValuePair : DependencyObject
     {
         public string Key
         {
@@ -61,6 +65,25 @@ namespace Opportunity.UWP.Controls
         public static readonly DependencyProperty KeyTypeProperty =
             DependencyProperty.Register(nameof(KeyType), typeof(Type), typeof(DataTemplateKeyValuePair), new PropertyMetadata(null, KeyTypeChangedCallback));
 
+        private static readonly Assembly[] Assemblies = new[]
+        {
+            Application.Current.GetType().GetTypeInfo().Assembly,
+            typeof(DependencyObject).GetTypeInfo().Assembly,
+        };
+
+        private Type GetType(string name)
+        {
+            name = name.Trim();
+            var callerAssembly = this.Parent();
+            foreach (var item in Assemblies)
+            {
+                var t = item.GetType(name, false, false);
+                if (t != null)
+                    return t;
+            }
+            return Type.GetType(name, true);
+        }
+
         private static void KeyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var sender = (DataTemplateKeyValuePair)d;
@@ -73,7 +96,7 @@ namespace Opportunity.UWP.Controls
                 sender.KeyType = null;
                 return;
             }
-            sender.KeyType = Type.GetType(n, true);
+            sender.KeyType = sender.GetType(n);
         }
 
         private static void KeyTypeChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
