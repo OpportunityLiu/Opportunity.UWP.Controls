@@ -30,6 +30,6 @@ namespace Opportunity.UWP.Controls
 {
     internal static class AssemblyInfo
     {
-        public const string Version = "1.0.1";
+        public const string Version = "1.0.2";
     }
 }
