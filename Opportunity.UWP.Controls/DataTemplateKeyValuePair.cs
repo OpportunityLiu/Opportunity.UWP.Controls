@@ -11,14 +11,14 @@ namespace Opportunity.UWP.Controls
     {
         public string Key
         {
-            get => (string)GetValue(KeyProperty); set => SetValue(KeyProperty, value);
+            get => (string)this.GetValue(KeyProperty); set => this.SetValue(KeyProperty, value);
         }
         public static readonly DependencyProperty KeyProperty =
             DependencyProperty.Register(nameof(Key), typeof(string), typeof(DataTemplateKeyValuePair), new PropertyMetadata("", KeyChangedCallback));
 
         public Type KeyType
         {
-            get => (Type)GetValue(KeyTypeProperty); set => SetValue(KeyTypeProperty, value);
+            get => (Type)this.GetValue(KeyTypeProperty); set => this.SetValue(KeyTypeProperty, value);
         }
         public static readonly DependencyProperty KeyTypeProperty =
             DependencyProperty.Register(nameof(KeyType), typeof(Type), typeof(DataTemplateKeyValuePair), new PropertyMetadata(typeof(object), KeyTypeChangedCallback));
@@ -62,8 +62,8 @@ namespace Opportunity.UWP.Controls
             if (e.NewValue is null)
                 throw new ArgumentNullException();
             var sender = (DataTemplateKeyValuePair)d;
-            var o = (Type)e.OldValue;
-            var n = (Type)e.NewValue;
+            var o = e.OldValue is Type ? (Type)e.OldValue : default;
+            var n = e.NewValue is Type ? (Type)e.NewValue : default;
             if (o == n)
                 return;
             sender.Key = n.FullName;
@@ -71,7 +71,7 @@ namespace Opportunity.UWP.Controls
 
         public DataTemplate Value
         {
-            get => (DataTemplate)GetValue(ValueProperty); set => SetValue(ValueProperty, value);
+            get => (DataTemplate)this.GetValue(ValueProperty); set => this.SetValue(ValueProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
